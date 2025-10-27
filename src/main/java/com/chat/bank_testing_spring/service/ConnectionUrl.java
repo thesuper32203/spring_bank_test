@@ -22,7 +22,8 @@ public class ConnectionUrl {
         ConnectParameters params = new ConnectParameters()
                 .customerId(customerId)
                 .partnerId(cfg.getPartnerId())
-                .addReportCustomFieldsItem(new ReportCustomField().label("NA").value("Loan").shown(true));
+                .addReportCustomFieldsItem(new ReportCustomField().label("NA").value("Loan").shown(true))
+                .redirectUri("http://www.wiseadvances.com");
         var linkResp = connectApi.generateConnectUrl(params);
         return linkResp.getLink();
     }
