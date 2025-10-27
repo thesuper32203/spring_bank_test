@@ -5,13 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages =  "com.chat.bank_testing_spring")
 public class BankTestingSpringApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BankTestingSpringApplication.class, args);
         }
-
     }
 
 

@@ -12,13 +12,13 @@ public class FinicityClientFactory {
     public ApiClient create(FinicityConfig config){
         ApiClient client = new ApiClient();
         //AppKey header for all calls
+        client.setBasePath(config.getBasePath());
         ApiKeyAuth appKey = (ApiKeyAuth) client.getAuthentication("FinicityAppKey");
         appKey.setApiKey(config.getAppKey());
-
         return client;
     }
 
-    public void setParameterToken(ApiClient client, String token){
+    public void setPartnerToken(ApiClient client, String token){
         ApiKeyAuth appToken = (ApiKeyAuth) client.getAuthentication("FinicityAppToken");
         appToken.setApiKey(token);
     }

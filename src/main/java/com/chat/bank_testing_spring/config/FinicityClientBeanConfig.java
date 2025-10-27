@@ -18,6 +18,7 @@ public class FinicityClientBeanConfig {
 
     @Bean
     public ApiClient finicityApiClient(){
+
         return factory.create(config);
     }
 }
