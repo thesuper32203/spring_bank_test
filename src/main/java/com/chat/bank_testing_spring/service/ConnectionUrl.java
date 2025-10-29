@@ -8,6 +8,9 @@ import org.openapitools.client.model.ConnectParameters;
 import org.openapitools.client.model.ReportCustomField;
 import org.springframework.stereotype.Service;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 @Service
 public class ConnectionUrl {
     private final ConnectApi connectApi;
@@ -18,13 +21,21 @@ public class ConnectionUrl {
         this.connectApi = new ConnectApi(client);
     }
 
-    public String generateConnectLink(String customerId) throws ApiException {
-        ConnectParameters params = new ConnectParameters()
-                .customerId(customerId)
-                .partnerId(cfg.getPartnerId())
-                .addReportCustomFieldsItem(new ReportCustomField().label("NA").value("Loan").shown(true))
-                .redirectUri("http://www.wiseadvances.com");
-        var linkResp = connectApi.generateConnectUrl(params);
-        return linkResp.getLink();
+    public String generateConnectLink(String customerId, String refId) throws ApiException {
+        String redirect = "https://transmaterial-frederic-nonbeatific.ngrok-free.dev/done?ref="+URLEncoder.encode(refId, StandardCharsets.UTF_8);
+
+        try {
+            ConnectParameters params = new ConnectParameters()
+                    .customerId(customerId)
+                    .partnerId(cfg.getPartnerId())
+                    .addReportCustomFieldsItem(new ReportCustomField().label("NA").value("Loan").shown(true))
+                    .redirectUri(redirect);
+            var linkResp = connectApi.generateConnectUrl(params);
+            return linkResp.getLink();
+        } catch (ApiException e) {
+            System.err.println("Status: " + e.getCode());
+            System.err.println("ErrorMessage: " + e.getResponseBody());
+            throw e;
+        }
     }
 }

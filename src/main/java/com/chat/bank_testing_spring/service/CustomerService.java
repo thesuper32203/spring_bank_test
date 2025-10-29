@@ -23,6 +23,7 @@ public class CustomerService {
         NewCustomer body = new NewCustomer()
                 .username(username)
                 .email(username + "@test.com");
+
         try {
             CreatedCustomer created = customerApi.addTestingCustomer(body);
             return created.getId();
