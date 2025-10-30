@@ -1,0 +1,16 @@
+
+
+# PaystubMonthlyIncomeRecord
+
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**estimatedMonthlyBasePay** | **BigDecimal** | The estimated monthly base pay amount for the employment from the paystub, calculated by Finicity |  [optional] |
+|**estimatedMonthlyOvertimePay** | **BigDecimal** | The estimated monthly overtime pay amount for the employment from the paystub, calculated by Finicity |  [optional] |
+|**estimatedMonthlyBonusPay** | **BigDecimal** | The estimated monthly bonus pay amount for the employment from the paystub, calculated by Finicity |  [optional] |
+|**estimatedMonthlyCommissionPay** | **BigDecimal** | The estimated commission bonus pay amount for the employment from the paystub, calculated by Finicity |  [optional] |
+
+
+
