@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>openapi-java-client</module>
+        <module>api_client</module>
         <module>bank_testing_spring</module>
     </modules>
 </project>
