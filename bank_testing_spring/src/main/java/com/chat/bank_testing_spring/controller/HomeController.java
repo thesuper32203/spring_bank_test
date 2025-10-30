@@ -3,6 +3,7 @@ package com.chat.bank_testing_spring.controller;
 import com.chat.bank_testing_spring.service.*;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.CustomerAccountSimple;
+import org.openapitools.client.model.CustomerAccountsSimple;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,12 @@ public class HomeController {
         this.accounts = accounts;
     }
 
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("title", "Welcome to Bank Connect");
+        return "home"; // points to home.html
+    }
+
     @GetMapping("/home")
     public ResponseEntity<Void> home() throws ApiException{
         auth.ensureToken();
@@ -45,6 +52,8 @@ public class HomeController {
 
     @GetMapping("/done")
     public String done(@RequestParam("ref") String refId) throws ApiException{
+
+        List<CustomerAccountsSimple> customerAccount = accounts.gatherAccounts();
         return "Your refId is " + refId;
     }
 

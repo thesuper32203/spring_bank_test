@@ -20,7 +20,6 @@ public class AccountsService {
     }
 
     public List<CustomerAccountSimple> gatherAccounts(String customerId) throws ApiException {
-
         CustomerAccountsSimple res = accountsApi.getCustomerAccountsSimple(customerId);
         if(res.getAccounts().isEmpty()) {throw new IllegalArgumentException("Account not found");}
         return res.getAccounts();
