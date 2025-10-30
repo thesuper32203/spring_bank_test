@@ -22,7 +22,7 @@ public class ConnectionUrl {
     }
 
     public String generateConnectLink(String customerId, String refId) throws ApiException {
-        String redirect = "https://transmaterial-frederic-nonbeatific.ngrok-free.dev/done?ref="+URLEncoder.encode(refId, StandardCharsets.UTF_8);
+        String redirect = "http://spring-bank-test.onrender.com/done?ref="+URLEncoder.encode(refId, StandardCharsets.UTF_8);
 
         try {
             ConnectParameters params = new ConnectParameters()
