@@ -30,8 +30,8 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("title", "Welcome to Bank Connect");
+    public String start() {
+
         return "home"; // points to home.html
     }
 
@@ -53,7 +53,7 @@ public class HomeController {
     @GetMapping("/done")
     public String done(@RequestParam("ref") String refId) throws ApiException{
 
-        List<CustomerAccountsSimple> customerAccount = accounts.gatherAccounts();
+        List<CustomerAccountSimple> customerAccount = accounts.gatherAccounts(refId);
         return "Your refId is " + refId;
     }
 
